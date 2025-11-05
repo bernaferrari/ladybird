@@ -82,5 +82,69 @@
             <mtext>some text</mtext>
         </math>
     </div>
+
+    <div class="test-case">
+        <h2>Test 7: Square Root</h2>
+        <p>Should show: √2</p>
+        <math>
+            <msqrt>
+                <mn>2</mn>
+            </msqrt>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 8: Superscript</h2>
+        <p>Should show: x²</p>
+        <math>
+            <msup>
+                <mi>x</mi>
+                <mn>2</mn>
+            </msup>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 9: Subscript</h2>
+        <p>Should show: a₁</p>
+        <math>
+            <msub>
+                <mi>a</mi>
+                <mn>1</mn>
+            </msub>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 10: Complex Expression</h2>
+        <p>Should show: x² + √y</p>
+        <math>
+            <msup>
+                <mi>x</mi>
+                <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <msqrt>
+                <mi>y</mi>
+            </msqrt>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 11: Fraction with Square Root</h2>
+        <p>Should show: (√a + b) / 2</p>
+        <math>
+            <mfrac>
+                <mrow>
+                    <msqrt>
+                        <mi>a</mi>
+                    </msqrt>
+                    <mo>+</mo>
+                    <mi>b</mi>
+                </mrow>
+                <mn>2</mn>
+            </mfrac>
+        </math>
+    </div>
 </body>
 </html>
