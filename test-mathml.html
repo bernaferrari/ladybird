@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MathML Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .test-case {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>MathML Rendering Test</h1>
+
+    <div class="test-case">
+        <h2>Test 1: Simple Numbers</h2>
+        <p>Should show: 1 + 2 = 3</p>
+        <math>
+            <mn>1</mn>
+            <mo>+</mo>
+            <mn>2</mn>
+            <mo>=</mo>
+            <mn>3</mn>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 2: Simple Variable</h2>
+        <p>Should show: x</p>
+        <math>
+            <mi>x</mi>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 3: Simple Expression</h2>
+        <p>Should show: a + b</p>
+        <math>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 4: Expression with mrow</h2>
+        <p>Should show: (x + y)</p>
+        <math>
+            <mrow>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mi>y</mi>
+                <mo>)</mo>
+            </mrow>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 5: Fraction</h2>
+        <p>Should show: 1/2</p>
+        <math>
+            <mfrac>
+                <mn>1</mn>
+                <mn>2</mn>
+            </mfrac>
+        </math>
+    </div>
+
+    <div class="test-case">
+        <h2>Test 6: Text Content</h2>
+        <p>Should show: some text</p>
+        <math>
+            <mtext>some text</mtext>
+        </math>
+    </div>
+</body>
+</html>
