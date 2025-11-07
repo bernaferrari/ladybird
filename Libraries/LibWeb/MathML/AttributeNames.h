@@ -12,15 +12,19 @@
 namespace Web::MathML::AttributeNames {
 
 #define ENUMERATE_MATHML_ATTRIBUTES                                \
+    __ENUMERATE_MATHML_ATTRIBUTE(actiontype, "actiontype")         \
     __ENUMERATE_MATHML_ATTRIBUTE(autofocus, "autofocus")           \
     __ENUMERATE_MATHML_ATTRIBUTE(depth, "depth")                   \
     __ENUMERATE_MATHML_ATTRIBUTE(dir, "dir")                       \
     __ENUMERATE_MATHML_ATTRIBUTE(displaystyle, "displaystyle")     \
     __ENUMERATE_MATHML_ATTRIBUTE(height, "height")                 \
+    __ENUMERATE_MATHML_ATTRIBUTE(lquote, "lquote")                 \
     __ENUMERATE_MATHML_ATTRIBUTE(mathbackground, "mathbackground") \
     __ENUMERATE_MATHML_ATTRIBUTE(mathcolor, "mathcolor")           \
     __ENUMERATE_MATHML_ATTRIBUTE(mathsize, "mathsize")             \
     __ENUMERATE_MATHML_ATTRIBUTE(mathvariant, "mathvariant")       \
+    __ENUMERATE_MATHML_ATTRIBUTE(rquote, "rquote")                 \
+    __ENUMERATE_MATHML_ATTRIBUTE(selection, "selection")           \
     __ENUMERATE_MATHML_ATTRIBUTE(scriptlevel, "scriptlevel")       \
     __ENUMERATE_MATHML_ATTRIBUTE(width, "width")
 

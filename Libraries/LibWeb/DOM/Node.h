@@ -23,6 +23,10 @@
 #include <LibWeb/TreeNode.h>
 #include <LibWeb/WebIDL/ExceptionOr.h>
 
+namespace Web::MathML {
+class MathMLActionElement;
+}
+
 namespace Web::DOM {
 
 enum class NameOrDescription {
@@ -297,6 +301,7 @@ public:
     HTML::HTMLAnchorElement const* enclosing_link_element() const;
     HTML::HTMLElement const* enclosing_html_element() const;
     HTML::HTMLElement const* enclosing_html_element_with_attribute(FlyString const&) const;
+    MathML::MathMLActionElement const* enclosing_mathml_action_with_tooltip() const;
 
     Utf16String child_text_content() const;
 

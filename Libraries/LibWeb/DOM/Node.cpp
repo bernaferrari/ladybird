@@ -31,6 +31,7 @@
 #include <LibWeb/DOM/MutationType.h>
 #include <LibWeb/DOM/NamedNodeMap.h>
 #include <LibWeb/DOM/Node.h>
+#include <LibWeb/MathML/MathMLActionElement.h>
 #include <LibWeb/DOM/NodeIterator.h>
 #include <LibWeb/DOM/ProcessingInstruction.h>
 #include <LibWeb/DOM/Range.h>
@@ -155,6 +156,15 @@ HTML::HTMLElement const* Node::enclosing_html_element_with_attribute(FlyString c
     for (auto* node = this; node; node = node->parent()) {
         if (auto* html_element = as_if<HTML::HTMLElement>(*node); html_element && html_element->has_attribute(attribute))
             return html_element;
+    }
+    return nullptr;
+}
+
+MathML::MathMLActionElement const* Node::enclosing_mathml_action_with_tooltip() const
+{
+    for (auto* node = this; node; node = node->parent()) {
+        if (auto* action = as_if<MathML::MathMLActionElement>(*node); action && action->supports_tooltip())
+            return action;
     }
     return nullptr;
 }

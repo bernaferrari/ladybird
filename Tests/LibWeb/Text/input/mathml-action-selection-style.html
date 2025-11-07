@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script src="include.js"></script>
+<math>
+    <maction>
+        <mi>a</mi>
+        <mi>b</mi>
+    </maction>
+</math>
+<math>
+    <maction selection="2">
+        <mi>x</mi>
+        <mi>y</mi>
+    </maction>
+</math>
+<script>
+test(() => {
+    const mactions = document.querySelectorAll("maction");
+    const first = mactions[0].querySelectorAll("mi");
+    const second = mactions[1].querySelectorAll("mi");
+
+    println(`first[0]: ${getComputedStyle(first[0]).display}`);
+    println(`first[1]: ${getComputedStyle(first[1]).display}`);
+    println(`second[0]: ${getComputedStyle(second[0]).display}`);
+    println(`second[1]: ${getComputedStyle(second[1]).display}`);
+});
+</script>

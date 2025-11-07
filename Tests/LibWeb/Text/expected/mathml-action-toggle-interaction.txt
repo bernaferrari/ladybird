@@ -1,0 +1,3 @@
+initial: selection=(none), displays=block math/none
+after click: selection=2, displays=none/block math
+after enter: selection=1, displays=block math/none

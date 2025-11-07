@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<script src="include.js"></script>
+<math>
+    <maction actiontype="toggle">
+        <mi>a</mi>
+        <mi>b</mi>
+    </maction>
+</math>
+<script>
+test(() => {
+    const maction = document.querySelector("maction");
+    const [first, second] = maction.querySelectorAll("mi");
+
+    function snapshot(label) {
+        println(`${label}: selection=${maction.getAttribute("selection") ?? "(none)"}, displays=${getComputedStyle(first).display}/${getComputedStyle(second).display}`);
+    }
+
+    snapshot("initial");
+    maction.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    snapshot("after click");
+    maction.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    snapshot("after enter");
+});
+</script>

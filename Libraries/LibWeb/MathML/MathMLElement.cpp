@@ -8,17 +8,21 @@
 #include <LibWeb/Bindings/MathMLElementPrototype.h>
 #include <LibWeb/CSS/Parser/Parser.h>
 #include <LibWeb/CSS/PropertyID.h>
+#include <LibWeb/CSS/StyleValues/DisplayStyleValue.h>
 #include <LibWeb/CSS/StyleValues/IntegerStyleValue.h>
 #include <LibWeb/CSS/StyleValues/KeywordStyleValue.h>
 #include <LibWeb/CSS/StyleValues/MathDepthStyleValue.h>
 #include <LibWeb/HTML/Numbers.h>
 #include <LibWeb/HTML/Parser/HTMLParser.h>
 #include <LibWeb/Layout/MathMLBox.h>
+#include <LibWeb/MathML/MathMLActionElement.h>
 #include <LibWeb/MathML/AttributeNames.h>
 #include <LibWeb/MathML/MathMLElement.h>
 #include <LibWeb/MathML/TagNames.h>
 
 namespace Web::MathML {
+
+static constexpr bool mathml_action_debug = false;
 
 GC_DEFINE_ALLOCATOR(MathMLElement);
 
@@ -137,6 +141,17 @@ void MathMLElement::apply_presentational_hints(GC::Ref<CSS::CascadedProperties> 
             }
         }
     });
+
+    if (auto parent_ptr = parent_element()) {
+        auto const& parent = *parent_ptr;
+        if (is<MathMLActionElement>(parent)) {
+            auto const& action = static_cast<MathMLActionElement const&>(parent);
+            bool selected = action.is_child_selected(*this);
+            dbgln_if(mathml_action_debug, "MathMLElement {} ({}) text='{}' in maction selected={}", debug_description(), static_cast<void const*>(this), text_content(), selected);
+            if (!selected)
+                cascaded_properties->set_property_from_presentational_hint(CSS::PropertyID::Display, CSS::DisplayStyleValue::create(CSS::Display::from_short(CSS::Display::Short::None)));
+        }
+    }
 }
 
 }

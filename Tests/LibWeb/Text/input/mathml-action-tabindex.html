@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script src="include.js"></script>
+<math>
+    <maction id="toggle" actiontype="toggle">
+        <mi>a</mi>
+        <mi>b</mi>
+    </maction>
+</math>
+<math>
+    <maction id="tooltip" actiontype="tooltip">
+        <mi>x</mi>
+        <mi>tooltip text</mi>
+    </maction>
+</math>
+<script>
+test(() => {
+    const toggle = document.getElementById("toggle");
+    const tooltip = document.getElementById("tooltip");
+
+    println(`toggle.tabIndex=${toggle.tabIndex}`);
+    println(`tooltip.tabIndex=${tooltip.tabIndex}`);
+
+    toggle.focus();
+    println(`focused=${document.activeElement === toggle}`);
+});
+</script>

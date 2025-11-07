@@ -28,6 +28,7 @@
 #include <LibWeb/Page/DragAndDropEventHandler.h>
 #include <LibWeb/Page/EventHandler.h>
 #include <LibWeb/Page/Page.h>
+#include <LibWeb/MathML/MathMLActionElement.h>
 #include <LibWeb/Painting/PaintableBox.h>
 #include <LibWeb/Painting/TextPaintable.h>
 #include <LibWeb/Selection/Selection.h>
@@ -864,10 +865,22 @@ EventResult EventHandler::handle_mousemove(CSSPixelPoint visual_viewport_positio
 
     if (hovered_node_changed) {
         GC::Ptr<HTML::HTMLElement const> hovered_html_element = node ? node->enclosing_html_element_with_attribute(HTML::AttributeNames::title) : nullptr;
+        GC::Ptr<MathML::MathMLActionElement const> hovered_mathml_action = node ? node->enclosing_mathml_action_with_tooltip() : nullptr;
 
-        if (hovered_html_element && hovered_html_element->title().has_value()) {
+        Optional<String> html_title;
+        if (hovered_html_element && hovered_html_element->title().has_value())
+            html_title = hovered_html_element->title();
+
+        Optional<String> mathml_tooltip;
+        if (hovered_mathml_action)
+            mathml_tooltip = hovered_mathml_action->tooltip_text();
+
+        if (html_title.has_value()) {
             page.set_is_in_tooltip_area(true);
-            page.client().page_did_enter_tooltip_area(hovered_html_element->title()->to_byte_string());
+            page.client().page_did_enter_tooltip_area(html_title->to_byte_string());
+        } else if (mathml_tooltip.has_value()) {
+            page.set_is_in_tooltip_area(true);
+            page.client().page_did_enter_tooltip_area(mathml_tooltip->to_byte_string());
         } else if (page.is_in_tooltip_area()) {
             page.set_is_in_tooltip_area(false);
             page.client().page_did_leave_tooltip_area();
